@@ -6,7 +6,7 @@ import { expressMiddleware } from "@as-integrations/express5";
 import { schema } from "./schema";
 import { createContext } from "./context";
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
+const PORT = 4000;
 
 async function main() {
   const app = express();
