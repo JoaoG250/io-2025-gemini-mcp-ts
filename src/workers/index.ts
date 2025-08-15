@@ -5,10 +5,15 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
 import { schema } from "./schema";
 import { createContext } from "./context";
+import { seedDatabase } from "./seed";
+import { execSync } from "child_process";
 
 const PORT = 4000;
 
 async function main() {
+  execSync("npx prisma db push", { stdio: "inherit" });
+  await seedDatabase();
+
   const app = express();
   app.use(cors());
   app.use(json());
